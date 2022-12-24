@@ -9,7 +9,9 @@ setup.py
 ../../build/base_control/base_control.egg-info/top_level.txt
 ../../build/base_control/base_control.egg-info/zip-safe
 base_control/__init__.py
+base_control/base_mobile.py
 base_control/controller.py
+base_control/odometry.py
 resource/base_control
 test/test_copyright.py
 test/test_flake8.py

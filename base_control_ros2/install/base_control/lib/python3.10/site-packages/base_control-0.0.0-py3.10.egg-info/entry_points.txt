@@ -1,3 +1,5 @@
 [console_scripts]
+base_mobile = base_control.base_mobile:main
 controller = base_control.controller:main
+odometry = base_control.odometry:main
 

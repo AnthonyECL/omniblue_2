@@ -20,6 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'base_mobile = base_control.base_mobile:main',
+            'odometry = base_control.odometry:main',
             'controller = base_control.controller:main',
         ],
     },

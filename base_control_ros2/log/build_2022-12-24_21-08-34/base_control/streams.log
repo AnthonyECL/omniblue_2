@@ -1,0 +1,29 @@
+[3.552s] Invoking command in '/home/hrabi/base_control_ros2/src/base_control': PYTHONPATH=/home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/base_control build --build-base /home/hrabi/base_control_ros2/build/base_control/build install --prefix /home/hrabi/base_control_ros2/install/base_control --record /home/hrabi/base_control_ros2/build/base_control/install.log --single-version-externally-managed
+[4.073s] running egg_info
+[4.075s] writing ../../build/base_control/base_control.egg-info/PKG-INFO
+[4.075s] writing dependency_links to ../../build/base_control/base_control.egg-info/dependency_links.txt
+[4.076s] writing entry points to ../../build/base_control/base_control.egg-info/entry_points.txt
+[4.076s] writing requirements to ../../build/base_control/base_control.egg-info/requires.txt
+[4.076s] writing top-level names to ../../build/base_control/base_control.egg-info/top_level.txt
+[4.120s] reading manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+[4.122s] writing manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+[4.122s] running build
+[4.122s] running build_py
+[4.123s] copying base_control/base_mobile.py -> /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control
+[4.123s] copying base_control/odometry.py -> /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control
+[4.123s] running install
+[4.124s] running install_lib
+[4.126s] copying /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control/base_mobile.py -> /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+[4.126s] copying /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control/odometry.py -> /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+[4.127s] byte-compiling /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/base_mobile.py to base_mobile.cpython-310.pyc
+[4.129s] byte-compiling /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/odometry.py to odometry.cpython-310.pyc
+[4.131s] running install_data
+[4.132s] running install_egg_info
+[4.134s] removing '/home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control-0.0.0-py3.10.egg-info' (and everything under it)
+[4.135s] Copying ../../build/base_control/base_control.egg-info to /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control-0.0.0-py3.10.egg-info
+[4.136s] running install_scripts
+[4.170s] Installing base_mobile script to /home/hrabi/base_control_ros2/install/base_control/lib/base_control
+[4.171s] Installing controller script to /home/hrabi/base_control_ros2/install/base_control/lib/base_control
+[4.171s] Installing odometry script to /home/hrabi/base_control_ros2/install/base_control/lib/base_control
+[4.172s] writing list of installed files to '/home/hrabi/base_control_ros2/build/base_control/install.log'
+[4.223s] Invoked command in '/home/hrabi/base_control_ros2/src/base_control' returned '0': PYTHONPATH=/home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/base_control build --build-base /home/hrabi/base_control_ros2/build/base_control/build install --prefix /home/hrabi/base_control_ros2/install/base_control --record /home/hrabi/base_control_ros2/build/base_control/install.log --single-version-externally-managed

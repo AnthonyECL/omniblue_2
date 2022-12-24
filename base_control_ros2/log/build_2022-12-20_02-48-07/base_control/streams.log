@@ -1,0 +1,37 @@
+[1.288s] Invoking command in '/home/hrabi/omniblue_ros2/base_control_ros2/src/base_control': PYTHONPATH=/home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/base_control build --build-base /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/build install --prefix /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control --record /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/install.log --single-version-externally-managed
+[1.705s] running egg_info
+[1.706s] creating ../../build/base_control/base_control.egg-info
+[1.706s] writing ../../build/base_control/base_control.egg-info/PKG-INFO
+[1.706s] writing dependency_links to ../../build/base_control/base_control.egg-info/dependency_links.txt
+[1.707s] writing entry points to ../../build/base_control/base_control.egg-info/entry_points.txt
+[1.707s] writing requirements to ../../build/base_control/base_control.egg-info/requires.txt
+[1.707s] writing top-level names to ../../build/base_control/base_control.egg-info/top_level.txt
+[1.709s] writing manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+[1.711s] reading manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+[1.713s] writing manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+[1.713s] running build
+[1.713s] running build_py
+[1.713s] creating /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/build
+[1.714s] creating /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/build/lib
+[1.714s] creating /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/build/lib/base_control
+[1.714s] copying base_control/controller.py -> /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/build/lib/base_control
+[1.714s] copying base_control/__init__.py -> /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/build/lib/base_control
+[1.715s] running install
+[1.715s] running install_lib
+[1.716s] creating /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+[1.716s] copying /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/build/lib/base_control/controller.py -> /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+[1.717s] copying /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/build/lib/base_control/__init__.py -> /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+[1.717s] byte-compiling /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/controller.py to controller.cpython-310.pyc
+[1.719s] byte-compiling /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/__init__.py to __init__.cpython-310.pyc
+[1.720s] running install_data
+[1.721s] creating /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/share/ament_index
+[1.721s] creating /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/share/ament_index/resource_index
+[1.721s] creating /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/share/ament_index/resource_index/packages
+[1.722s] copying resource/base_control -> /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/share/ament_index/resource_index/packages
+[1.722s] copying package.xml -> /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/share/base_control
+[1.722s] running install_egg_info
+[1.724s] Copying ../../build/base_control/base_control.egg-info to /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control-0.0.0-py3.10.egg-info
+[1.725s] running install_scripts
+[1.756s] Installing controller script to /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/lib/base_control
+[1.756s] writing list of installed files to '/home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/install.log'
+[1.801s] Invoked command in '/home/hrabi/omniblue_ros2/base_control_ros2/src/base_control' returned '0': PYTHONPATH=/home/hrabi/omniblue_ros2/base_control_ros2/install/base_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/base_control build --build-base /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/build install --prefix /home/hrabi/omniblue_ros2/base_control_ros2/install/base_control --record /home/hrabi/omniblue_ros2/base_control_ros2/build/base_control/install.log --single-version-externally-managed

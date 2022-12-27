@@ -12,14 +12,11 @@ _POLYTECH LILLE - LABORATOIRE CRIStAL_ 2022/2023
 
 ## Desciption
 
-
-
-## Getting started
-
 Vous trouverez dans ce dépôt git les différents noeuds et packages ROS2 pour la mise en marche du robot Omniblue.
 
-Ce dépôt est divisé en 2 branches :
+Ce dépôt est divisé en 3 branches :
 
+- Main : Read_Me.
 - Base mobile : pour la base holonome.
 - Bras manipulateur : pour le bras manipulateur.
 

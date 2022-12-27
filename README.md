@@ -1,7 +1,7 @@
 # Omniblue 
 
 Omniblue est un robot mobile prototype du robot Matrice, conçue pour la fabrication additive. Il est composé d'une base mobile holonome (développée à central Lille) et d'un bras manipulateur Niryo Ned. 
-La partie de la base mobile est devellopé par Haytham RABI, et la partie bras manipulateur par Ayman Moummadi.
+La partie de la base mobile est devellopée par Haytham RABI, et la partie bras manipulateur par Ayman Moummadi.
 
 Ce projet est sous la supervision de : 
 - Othman Lakhal  

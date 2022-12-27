@@ -1,3 +1,9 @@
+######################################################################################################################
+######################################################################################################################
+################################            Node to control trajectory       #########################################
+##################### subscribe to odometry or optitrack and publish cmd_vel to base_mobile ##########################
+######################################################################################################################
+######################################## Haytham Rabi ################################################################       
 import rclpy
 import can
 import time
@@ -39,13 +45,7 @@ def euler_from_quaternion(x, y, z, w):
     yaw_z = math.atan2(t3, t4)
     
     return roll_x, pitch_y, yaw_z # in radians
-    
-    ##################################################################################################################
-######################################################################################################################
-################################            Node to control trajectory       #########################################
-################################ subscribe to odometry and publish cmd_vel to base_mobile ############################
-######################################################################################################################
-##################################################################################################################       
+
 
 class Controller_pub(Node):
 
@@ -55,24 +55,25 @@ class Controller_pub(Node):
         
         #init variable
         self.odom = Odometry()
-        
-        #
         self.t0 = time.time()
         self.xref = 0
         self.yref = 0
         self.phiref = 0  
         
-        # subscribe to odometry 20ms
+        # subscribe to odometry 
         self.subscription = self.create_subscription(Odometry,'odom',self.listener_callback,10)
+        # subscribe to optitrack
+        #self.subscription = self.create_subscription(Odometry,'odom',self.listener_callback,10)
         self.subscription  # prevent unused variable warning
         
-        time.sleep(0.0001)
+        time.sleep(0.0001)# to subsribe first before publishing
         
         ## publish twist msg
         self.publisher = self.create_publisher(Twist, 'cmd_vel_control', 10)
         timer_period = 0.16  # seconds
         self.timer = self.create_timer(timer_period, self.Controller_callback)
         
+        # Data aquisitions
         # Init the csv file for writing Poses and Velocities
         with open('/home/hrabi/data_aquisition/vitesses.csv', 'w') as fileObj:
             writerObj = csv.writer(fileObj)
@@ -105,14 +106,13 @@ class Controller_pub(Node):
         self.odom = odom
         
     def trajectoire(self,t0):
-        #dans R0
-        
+        #Ref dans R0
         t = time.time() - t0    
         print(f"time {t}")
-        
+
         if t < 60:
                        
-            P = [4,0,0]
+            P = [0,0,pi]
             
             return P,t
 #        

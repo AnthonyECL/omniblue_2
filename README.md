@@ -12,7 +12,7 @@ The low level nodes `base_mobile` and `odometry` use CAN communication, and shou
 
 The high level control algo contains the `controller` node, which is a Publisher/subscriber node :
 
-- The controller node subscribes to `odom` or `mocap_rigid_bodies`... to get the poses of the base. The node contains a `pid_controller` that compare the actual robot trajectory to the reference trajectory, and publish the new command to the `base_mobile` via the topic `cmd_vel_control`.
+- The controller node subscribes to `odom` or `mocap_rigid_bodies` to get the poses of the base. The node contains a `pid_controller` that compare the actual robot trajectory to the reference trajectory, and publish the new command to the `base_mobile` via the topic `cmd_vel_control`.
  
 ## Base architecture 
 

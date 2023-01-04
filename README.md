@@ -16,9 +16,6 @@ The high level control algo contains the `controller` node, which is a Publisher
  
 ## Base architecture 
 
-![image.png](./image.png)
-
-
 # Configuration
 
 In this project, Iam using :

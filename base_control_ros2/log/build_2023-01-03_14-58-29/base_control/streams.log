@@ -1,0 +1,26 @@
+[2.356s] Invoking command in '/home/hrabi/base_control_ros2/src/base_control': PYTHONPATH=/home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/base_control build --build-base /home/hrabi/base_control_ros2/build/base_control/build install --prefix /home/hrabi/base_control_ros2/install/base_control --record /home/hrabi/base_control_ros2/build/base_control/install.log --single-version-externally-managed
+[3.137s] running egg_info
+[3.137s] writing ../../build/base_control/base_control.egg-info/PKG-INFO
+[3.138s] writing dependency_links to ../../build/base_control/base_control.egg-info/dependency_links.txt
+[3.139s] writing entry points to ../../build/base_control/base_control.egg-info/entry_points.txt
+[3.139s] writing requirements to ../../build/base_control/base_control.egg-info/requires.txt
+[3.140s] writing top-level names to ../../build/base_control/base_control.egg-info/top_level.txt
+[3.145s] reading manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+[3.147s] writing manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+[3.147s] running build
+[3.148s] running build_py
+[3.148s] copying base_control/controller.py -> /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control
+[3.149s] running install
+[3.149s] running install_lib
+[3.151s] copying /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control/controller.py -> /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+[3.153s] byte-compiling /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/controller.py to controller.cpython-310.pyc
+[3.157s] running install_data
+[3.159s] running install_egg_info
+[3.164s] removing '/home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control-0.0.0-py3.10.egg-info' (and everything under it)
+[3.166s] Copying ../../build/base_control/base_control.egg-info to /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control-0.0.0-py3.10.egg-info
+[3.167s] running install_scripts
+[3.204s] Installing base_mobile script to /home/hrabi/base_control_ros2/install/base_control/lib/base_control
+[3.205s] Installing controller script to /home/hrabi/base_control_ros2/install/base_control/lib/base_control
+[3.205s] Installing odometry script to /home/hrabi/base_control_ros2/install/base_control/lib/base_control
+[3.206s] writing list of installed files to '/home/hrabi/base_control_ros2/build/base_control/install.log'
+[3.281s] Invoked command in '/home/hrabi/base_control_ros2/src/base_control' returned '0': PYTHONPATH=/home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/base_control build --build-base /home/hrabi/base_control_ros2/build/base_control/build install --prefix /home/hrabi/base_control_ros2/install/base_control --record /home/hrabi/base_control_ros2/build/base_control/install.log --single-version-externally-managed

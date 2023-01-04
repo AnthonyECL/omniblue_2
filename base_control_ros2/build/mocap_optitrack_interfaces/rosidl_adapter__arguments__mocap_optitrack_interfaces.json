@@ -1,0 +1,9 @@
+{
+  "package_name": "mocap_optitrack_interfaces",
+  "non_idl_tuples": [
+    "/home/hrabi/base_control_ros2/src/mocap_optitrack_interfaces:msg/RigidBody.msg",
+    "/home/hrabi/base_control_ros2/src/mocap_optitrack_interfaces:msg/RigidBodyArray.msg",
+    "/home/hrabi/base_control_ros2/src/mocap_optitrack_interfaces:msg/Configuration.msg",
+    "/home/hrabi/base_control_ros2/src/mocap_optitrack_interfaces:msg/ConfigurationArray.msg"
+  ]
+}

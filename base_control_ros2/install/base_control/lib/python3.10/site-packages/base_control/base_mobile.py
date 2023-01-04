@@ -1,3 +1,9 @@
+##################################################################################################################
+######################################################################################################################
+################################            Node _base_mobile_ Low level     #########################################
+################################ subscribe to controller or teleop_keyb and send CAN msgs ############################
+######################################################################################################################
+############################################### Haytham Rabi #########################################################       
 import rclpy
 import can
 import time 
@@ -27,8 +33,8 @@ class Base_mobile(Node):
         L=0.425/2
         w=0.335/2
         #matrice A-1
-        #AA = np.array([[1/R,-1/R,-(L+w)/R,1/4],[1/R,1/R,-(L+w)/R,-1/4],[1/R,-1/R,(L+w)/R,-1/4],[1/R,1/R,(L+w)/R,1/4]])#old
-        AA = np.array([[1/R,-1/R,-(L+w)/R,1/4],[1/R,1/R,(L+w)/R,1/4],[1/R,1/R,-(L+w)/R,-1/4],[1/R,-1/R,(L+w)/R,-1/4]])#new
+        AA = np.array([[1/R,-1/R,-(L+w)/R,1/4],[1/R,1/R,-(L+w)/R,-1/4],[1/R,-1/R,(L+w)/R,-1/4],[1/R,1/R,(L+w)/R,1/4]])#old
+        #AA = np.array([[1/R,-1/R,-(L+w)/R,1/4],[1/R,1/R,(L+w)/R,1/4],[1/R,1/R,-(L+w)/R,-1/4],[1/R,-1/R,(L+w)/R,-1/4]])#new
         #/cmd_vel
         V= np.array([x,y,phi,0])
         #Calcul de W1,W2,W3 et W4 //[W]=[A-1].[V]
@@ -48,12 +54,12 @@ class Base_mobile(Node):
         #  1 cons ----> 2.083 cm/s ------> 0.4166 rd/s
         #     # 1 pulse --> 2.5cm/s --> 0.5 rd/s
         R=5 #cm
-        alpha = 2.56072580645161/2 #cm/s (/2 nouvelle maj uC)
+        alpha = 2.56072580645161/2 #cm/s (alpha/2 nouvelle m_a_j uC)
         #conversion from rd/s to cons
         constante_mot0 = float(W[0]/(alpha/R))
         constante_mot1 = float(W[1]/(alpha/R))
-        constante_mot2 = float(W[3]/(alpha/R))
-        constante_mot3 = float(W[2]/(alpha/R))
+        constante_mot2 = float(W[2]/(alpha/R))
+        constante_mot3 = float(W[3]/(alpha/R))
         #partie entiere arrondie
         constante_mot0 = int(round(constante_mot0))
         constante_mot1 = int(round(constante_mot1))

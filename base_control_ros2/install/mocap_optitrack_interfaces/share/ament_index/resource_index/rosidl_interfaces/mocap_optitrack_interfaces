@@ -1,0 +1,8 @@
+msg/Configuration.idl
+msg/Configuration.msg
+msg/ConfigurationArray.idl
+msg/ConfigurationArray.msg
+msg/RigidBody.idl
+msg/RigidBody.msg
+msg/RigidBodyArray.idl
+msg/RigidBodyArray.msg

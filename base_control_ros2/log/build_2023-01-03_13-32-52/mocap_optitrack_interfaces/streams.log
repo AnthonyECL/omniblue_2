@@ -1,0 +1,210 @@
+[0.493s] Invoking command in '/home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hrabi/base_control_ros2/install/base_control:/opt/ros/humble /usr/bin/cmake --build /home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces -- -j4 -l4
+[0.552s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_generator_c[0m
+[0.571s] [  1%] Built target mocap_optitrack_interfaces__cpp
+[0.579s] [ 12%] Built target mocap_optitrack_interfaces__rosidl_generator_c
+[0.594s] [ 12%] Built target ament_cmake_python_copy_mocap_optitrack_interfaces
+[0.605s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_typesupport_cpp[0m
+[0.618s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_typesupport_introspection_cpp[0m
+[0.618s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_cpp[0m
+[0.625s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_c[0m
+[0.673s] [ 23%] Built target mocap_optitrack_interfaces__rosidl_typesupport_introspection_cpp
+[0.676s] [ 34%] Built target mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_c
+[0.677s] [ 45%] Built target mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_cpp
+[0.685s] [ 56%] Built target mocap_optitrack_interfaces__rosidl_typesupport_cpp
+[0.698s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_typesupport_introspection_c[0m
+[0.699s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_typesupport_c[0m
+[0.728s] [ 69%] Built target mocap_optitrack_interfaces__rosidl_typesupport_introspection_c
+[0.729s] [ 78%] Built target mocap_optitrack_interfaces__rosidl_typesupport_c
+[0.768s] [ 78%] Built target mocap_optitrack_interfaces
+[0.809s] [ 80%] Built target mocap_optitrack_interfaces__py
+[0.832s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_generator_py[0m
+[0.859s] [ 89%] Built target mocap_optitrack_interfaces__rosidl_generator_py
+[0.879s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_typesupport_introspection_c__pyext[0m
+[0.882s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_typesupport_c__pyext[0m
+[0.902s] [35m[1mConsolidate compiler generated dependencies of target mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_c__pyext[0m
+[0.912s] [ 92%] Built target mocap_optitrack_interfaces__rosidl_typesupport_c__pyext
+[0.940s] [ 96%] Built target mocap_optitrack_interfaces__rosidl_typesupport_introspection_c__pyext
+[0.942s] [100%] Built target mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[1.400s] running egg_info
+[1.401s] writing mocap_optitrack_interfaces.egg-info/PKG-INFO
+[1.402s] writing dependency_links to mocap_optitrack_interfaces.egg-info/dependency_links.txt
+[1.402s] writing top-level names to mocap_optitrack_interfaces.egg-info/top_level.txt
+[1.409s] reading manifest file 'mocap_optitrack_interfaces.egg-info/SOURCES.txt'
+[1.410s] writing manifest file 'mocap_optitrack_interfaces.egg-info/SOURCES.txt'
+[1.456s] [100%] Built target ament_cmake_python_build_mocap_optitrack_interfaces_egg
+[1.471s] Invoked command in '/home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hrabi/base_control_ros2/install/base_control:/opt/ros/humble /usr/bin/cmake --build /home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces -- -j4 -l4
+[1.621s] Invoking command in '/home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hrabi/base_control_ros2/install/base_control:/opt/ros/humble /usr/bin/cmake --install /home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces
+[1.631s] -- Install configuration: ""
+[1.633s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/ament_index/resource_index/rosidl_interfaces/mocap_optitrack_interfaces
+[1.633s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces
+[1.633s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg
+[1.634s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/rosidl_generator_c__visibility_control.h
+[1.634s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/rigid_body_array.h
+[1.635s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/rigid_body.h
+[1.636s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/configuration.h
+[1.636s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail
+[1.637s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__struct.h
+[1.638s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__struct.h
+[1.639s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__functions.c
+[1.639s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__functions.h
+[1.640s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__functions.c
+[1.640s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__type_support.h
+[1.641s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__functions.h
+[1.641s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__functions.h
+[1.642s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__functions.c
+[1.642s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__functions.h
+[1.642s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__functions.c
+[1.643s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__type_support.h
+[1.643s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__type_support.h
+[1.644s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__type_support.h
+[1.645s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__struct.h
+[1.645s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__struct.h
+[1.645s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/configuration_array.h
+[1.646s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/environment/library_path.sh
+[1.646s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/environment/library_path.dsv
+[1.646s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/lib/libmocap_optitrack_interfaces__rosidl_generator_c.so
+[1.646s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces
+[1.646s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg
+[1.646s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[1.647s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail
+[1.647s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__rosidl_typesupport_fastrtps_c.h
+[1.647s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__rosidl_typesupport_fastrtps_c.h
+[1.647s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__rosidl_typesupport_fastrtps_c.h
+[1.647s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__rosidl_typesupport_fastrtps_c.h
+[1.648s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/lib/libmocap_optitrack_interfaces__rosidl_typesupport_fastrtps_c.so
+[1.648s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces
+[1.648s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg
+[1.648s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[1.648s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail
+[1.648s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__type_support.c
+[1.649s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__rosidl_typesupport_introspection_c.h
+[1.649s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__type_support.c
+[1.649s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__rosidl_typesupport_introspection_c.h
+[1.649s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__type_support.c
+[1.649s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__rosidl_typesupport_introspection_c.h
+[1.649s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__rosidl_typesupport_introspection_c.h
+[1.650s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__type_support.c
+[1.650s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/lib/libmocap_optitrack_interfaces__rosidl_typesupport_introspection_c.so
+[1.650s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/lib/libmocap_optitrack_interfaces__rosidl_typesupport_c.so
+[1.650s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces
+[1.650s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg
+[1.650s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/rigid_body.hpp
+[1.651s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/rigid_body_array.hpp
+[1.651s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/configuration_array.hpp
+[1.651s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/configuration.hpp
+[1.651s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail
+[1.651s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__builder.hpp
+[1.651s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__struct.hpp
+[1.652s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__struct.hpp
+[1.652s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__struct.hpp
+[1.652s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__builder.hpp
+[1.652s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__builder.hpp
+[1.652s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__traits.hpp
+[1.653s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__traits.hpp
+[1.653s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__traits.hpp
+[1.653s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__struct.hpp
+[1.653s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__traits.hpp
+[1.653s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__builder.hpp
+[1.653s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces
+[1.654s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg
+[1.654s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[1.654s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail
+[1.654s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__rosidl_typesupport_fastrtps_cpp.hpp
+[1.654s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__rosidl_typesupport_fastrtps_cpp.hpp
+[1.654s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__rosidl_typesupport_fastrtps_cpp.hpp
+[1.655s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__rosidl_typesupport_fastrtps_cpp.hpp
+[1.655s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/dds_fastrtps
+[1.655s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/lib/libmocap_optitrack_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[1.655s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces
+[1.655s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg
+[1.655s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail
+[1.656s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__type_support.cpp
+[1.656s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration_array__rosidl_typesupport_introspection_cpp.hpp
+[1.656s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__rosidl_typesupport_introspection_cpp.hpp
+[1.656s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__type_support.cpp
+[1.656s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body__rosidl_typesupport_introspection_cpp.hpp
+[1.657s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/rigid_body_array__type_support.cpp
+[1.657s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__type_support.cpp
+[1.657s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/include/mocap_optitrack_interfaces/mocap_optitrack_interfaces/msg/detail/configuration__rosidl_typesupport_introspection_cpp.hpp
+[1.657s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/lib/libmocap_optitrack_interfaces__rosidl_typesupport_introspection_cpp.so
+[1.657s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/lib/libmocap_optitrack_interfaces__rosidl_typesupport_cpp.so
+[1.657s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/environment/pythonpath.sh
+[1.658s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/environment/pythonpath.dsv
+[1.658s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces-0.0.0-py3.10.egg-info
+[1.658s] -- Installing: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[1.658s] -- Installing: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[1.658s] -- Installing: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[1.658s] -- Installing: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[1.659s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces
+[1.659s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/_mocap_optitrack_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[1.659s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/_mocap_optitrack_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[1.659s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/libmocap_optitrack_interfaces__rosidl_generator_py.so
+[1.659s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/mocap_optitrack_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.659s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/mocap_optitrack_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.660s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/mocap_optitrack_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.660s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/__init__.py
+[1.660s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg
+[1.660s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg/_rigid_body_s.c
+[1.660s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg/_configuration.py
+[1.660s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg/_rigid_body.py
+[1.661s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg/_configuration_array.py
+[1.661s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg/_rigid_body_array.py
+[1.661s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg/__init__.py
+[1.661s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg/_configuration_array_s.c
+[1.661s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg/_rigid_body_array_s.c
+[1.661s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg/_configuration_s.c
+[1.662s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/_mocap_optitrack_interfaces_s.ep.rosidl_typesupport_c.c
+[1.721s] Listing '/home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces'...
+[1.722s] Listing '/home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/msg'...
+[1.729s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/mocap_optitrack_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.730s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/mocap_optitrack_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.730s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/local/lib/python3.10/dist-packages/mocap_optitrack_interfaces/mocap_optitrack_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.731s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/lib/libmocap_optitrack_interfaces__rosidl_generator_py.so
+[1.732s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/msg/RigidBody.idl
+[1.732s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/msg/RigidBodyArray.idl
+[1.733s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/msg/Configuration.idl
+[1.733s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/msg/ConfigurationArray.idl
+[1.733s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/msg/RigidBody.msg
+[1.734s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/msg/RigidBodyArray.msg
+[1.734s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/msg/Configuration.msg
+[1.735s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/msg/ConfigurationArray.msg
+[1.735s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/ament_index/resource_index/package_run_dependencies/mocap_optitrack_interfaces
+[1.735s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/ament_index/resource_index/parent_prefix_path/mocap_optitrack_interfaces
+[1.736s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/environment/ament_prefix_path.sh
+[1.736s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/environment/ament_prefix_path.dsv
+[1.737s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/environment/path.sh
+[1.737s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/environment/path.dsv
+[1.738s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/local_setup.bash
+[1.738s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/local_setup.sh
+[1.738s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/local_setup.zsh
+[1.738s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/local_setup.dsv
+[1.738s] -- Installing: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/package.dsv
+[1.739s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/ament_index/resource_index/packages/mocap_optitrack_interfaces
+[1.739s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/export_mocap_optitrack_interfaces__rosidl_generator_cExport.cmake
+[1.739s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/export_mocap_optitrack_interfaces__rosidl_generator_cExport-noconfig.cmake
+[1.739s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/export_mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[1.739s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/export_mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[1.740s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[1.740s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[1.740s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfaces__rosidl_typesupport_cExport.cmake
+[1.741s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[1.742s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/export_mocap_optitrack_interfaces__rosidl_generator_cppExport.cmake
+[1.744s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/export_mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[1.745s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/export_mocap_optitrack_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[1.745s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[1.746s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[1.747s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfaces__rosidl_typesupport_cppExport.cmake
+[1.748s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[1.748s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/export_mocap_optitrack_interfaces__rosidl_generator_pyExport.cmake
+[1.749s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/export_mocap_optitrack_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[1.750s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/rosidl_cmake-extras.cmake
+[1.750s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.752s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.755s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[1.755s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[1.757s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[1.758s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[1.759s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfacesConfig.cmake
+[1.759s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/cmake/mocap_optitrack_interfacesConfig-version.cmake
+[1.759s] -- Up-to-date: /home/hrabi/base_control_ros2/install/mocap_optitrack_interfaces/share/mocap_optitrack_interfaces/package.xml
+[1.760s] Invoked command in '/home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hrabi/base_control_ros2/install/base_control:/opt/ros/humble /usr/bin/cmake --install /home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces

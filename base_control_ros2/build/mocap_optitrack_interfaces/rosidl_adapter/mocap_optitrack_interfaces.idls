@@ -1,0 +1,4 @@
+/home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces/rosidl_adapter/mocap_optitrack_interfaces:msg/RigidBody.idl
+/home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces/rosidl_adapter/mocap_optitrack_interfaces:msg/RigidBodyArray.idl
+/home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces/rosidl_adapter/mocap_optitrack_interfaces:msg/Configuration.idl
+/home/hrabi/base_control_ros2/build/mocap_optitrack_interfaces/rosidl_adapter/mocap_optitrack_interfaces:msg/ConfigurationArray.idl

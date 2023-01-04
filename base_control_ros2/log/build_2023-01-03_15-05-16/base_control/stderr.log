@@ -1,0 +1,5 @@
+  File "/home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/controller.py", line 124
+    self.optitrack = optitrack   60
+                                 ^^
+SyntaxError: invalid syntax
+

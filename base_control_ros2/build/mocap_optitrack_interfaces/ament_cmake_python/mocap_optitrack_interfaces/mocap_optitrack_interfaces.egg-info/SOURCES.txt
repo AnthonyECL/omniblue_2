@@ -1,0 +1,11 @@
+setup.py
+mocap_optitrack_interfaces/__init__.py
+mocap_optitrack_interfaces.egg-info/PKG-INFO
+mocap_optitrack_interfaces.egg-info/SOURCES.txt
+mocap_optitrack_interfaces.egg-info/dependency_links.txt
+mocap_optitrack_interfaces.egg-info/top_level.txt
+mocap_optitrack_interfaces/msg/__init__.py
+mocap_optitrack_interfaces/msg/_configuration.py
+mocap_optitrack_interfaces/msg/_configuration_array.py
+mocap_optitrack_interfaces/msg/_rigid_body.py
+mocap_optitrack_interfaces/msg/_rigid_body_array.py

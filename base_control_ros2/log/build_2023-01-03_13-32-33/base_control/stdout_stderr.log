@@ -1,0 +1,43 @@
+running egg_info
+creating ../../build/base_control/base_control.egg-info
+writing ../../build/base_control/base_control.egg-info/PKG-INFO
+writing dependency_links to ../../build/base_control/base_control.egg-info/dependency_links.txt
+writing entry points to ../../build/base_control/base_control.egg-info/entry_points.txt
+writing requirements to ../../build/base_control/base_control.egg-info/requires.txt
+writing top-level names to ../../build/base_control/base_control.egg-info/top_level.txt
+writing manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+reading manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+writing manifest file '../../build/base_control/base_control.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/hrabi/base_control_ros2/build/base_control/build
+creating /home/hrabi/base_control_ros2/build/base_control/build/lib
+creating /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control
+copying base_control/base_mobile.py -> /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control
+copying base_control/controller.py -> /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control
+copying base_control/__init__.py -> /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control
+copying base_control/odometry.py -> /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control
+running install
+running install_lib
+creating /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+copying /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control/base_mobile.py -> /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+copying /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control/controller.py -> /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+copying /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control/__init__.py -> /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+copying /home/hrabi/base_control_ros2/build/base_control/build/lib/base_control/odometry.py -> /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control
+byte-compiling /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/base_mobile.py to base_mobile.cpython-310.pyc
+byte-compiling /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/controller.py to controller.cpython-310.pyc
+byte-compiling /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control/odometry.py to odometry.cpython-310.pyc
+running install_data
+creating /home/hrabi/base_control_ros2/install/base_control/share/ament_index
+creating /home/hrabi/base_control_ros2/install/base_control/share/ament_index/resource_index
+creating /home/hrabi/base_control_ros2/install/base_control/share/ament_index/resource_index/packages
+copying resource/base_control -> /home/hrabi/base_control_ros2/install/base_control/share/ament_index/resource_index/packages
+copying package.xml -> /home/hrabi/base_control_ros2/install/base_control/share/base_control
+running install_egg_info
+Copying ../../build/base_control/base_control.egg-info to /home/hrabi/base_control_ros2/install/base_control/lib/python3.10/site-packages/base_control-0.0.0-py3.10.egg-info
+running install_scripts
+Installing base_mobile script to /home/hrabi/base_control_ros2/install/base_control/lib/base_control
+Installing controller script to /home/hrabi/base_control_ros2/install/base_control/lib/base_control
+Installing odometry script to /home/hrabi/base_control_ros2/install/base_control/lib/base_control
+writing list of installed files to '/home/hrabi/base_control_ros2/build/base_control/install.log'

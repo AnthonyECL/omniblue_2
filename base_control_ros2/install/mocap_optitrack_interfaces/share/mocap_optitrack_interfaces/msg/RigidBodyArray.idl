@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mocap_optitrack_interfaces/msg/RigidBodyArray.msg
+// generated code does not contain a copyright notice
+
+#include "mocap_optitrack_interfaces/msg/RigidBody.idl"
+
+module mocap_optitrack_interfaces {
+  module msg {
+    @verbatim (language="comment", text=
+      "Array of rigid bodies")
+    struct RigidBodyArray {
+      sequence<mocap_optitrack_interfaces::msg::RigidBody> rigid_bodies;
+    };
+  };
+};

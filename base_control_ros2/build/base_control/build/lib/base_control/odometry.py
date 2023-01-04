@@ -1,6 +1,7 @@
 ######################################################################################################################
-########################### Node to decode the encoders and send odometry to controllers ########################### 
+########################### Node to decode encoders msgs and send odometry to controllers ########################### 
 ######################################################################################################################
+######################################## Haytham Rabi ###############################################################
 import rclpy
 import can
 import time
@@ -113,10 +114,10 @@ class Odometry_pub(Node):
         alpha = 2.56072580645161/2 #(cm/s)/pulse
         
         #rad/s
-        w0 = P0 * (alpha/R) #*2
-        w1 = P1 * (alpha/R) #*2
-        w2 = P2 * (alpha/R) #*2
-        w3 = P3 * (alpha/R) #*2
+        w0 = P0 * (alpha/R) 
+        w1 = P1 * (alpha/R) 
+        w2 = P2 * (alpha/R) 
+        w3 = P3 * (alpha/R)
            
         wm = [w0,w1,w2,w3]
         
@@ -136,8 +137,7 @@ class Odometry_pub(Node):
         W3 = Wm[3]
        
         #matrice A
-        A = np.array([[R/4,R/4,R/4,R/4],[-R/4,R/4,R/4,-R/4],[-R/(4*(L+w)),R/(4*(L+w)),-R/(4*(L+w)),R/(4*(L+w))],[1,1,-1,-1]])
-       
+        A = np.array([[R/4,R/4,R/4,R/4],[-R/4,R/4,-R/4,R/4],[-R/(4*(L+w)),-R/(4*(L+w)),R/(4*(L+w)),R/(4*(L+w))],[-1,-1,-1,-1]])
         W= np.array([W0,W1,W2,W3])
        
         #Calcul de Vx,Vy,Vphi//[V]=[A].[W]
@@ -200,8 +200,8 @@ class Odometry_pub(Node):
        
         Wm = self.Calcul_vitesse(P0,P1,P3,P2)
         
-        print("\n Wn \n")
-        print(Wm)
+        #print("\n Wn \n")
+        #print(Wm)
         
         Vm = self.Model_Direct(Wm)#R1
         

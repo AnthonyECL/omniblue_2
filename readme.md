@@ -89,6 +89,8 @@ For more details, check the ROS2 documentation : https://docs.ros.org/en/foxy/in
 
 In this project I used ROS2 MoCap Optitrack , click the link for documentation and setup : https://github.com/tud-cor-sr/ros2-mocap_optitrack.git
 
+If you got the error message : `"Rigid body of the base not found"` while running `ros2 launch launch/launch_y_up.py ` , comment line 109 to 114  in file `/mocap_optitrack_w2b/src/WorldToBase.cpp`, save then re`colcon build`.
+
 ## Tip
 
 If you don’t want to repeat the configuration every time, you can add the commands to your `~/.bashrc` 

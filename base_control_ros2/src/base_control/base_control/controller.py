@@ -60,9 +60,9 @@ class Controller_pub(Node):
         self.optitrack = RigidBodyArray()
         
         self.t0 = time.time()
-        self.t0_opt = 0
-        self.Te = 0.16 #sec optitrack # 0.16 # sec odom 
-        
+        self.Te = 0.08 #sec optitrack # 0.16 # sec odom 
+        self.t_plot = 0
+
         self.xref = 0
         self.yref = 0
         self.phiref = 0  
@@ -81,7 +81,7 @@ class Controller_pub(Node):
         self.timer = self.create_timer(timer_period, self.Controller_callback)
         
         # init cpt pub/sub
-        self.cpt_sub = 0
+        self.cpt_sub = -1
         self.cpt_pub = 0
 
         # Data aquisitions
@@ -89,18 +89,18 @@ class Controller_pub(Node):
         with open('/home/hrabi/data_aquisition/vitesses.csv', 'w') as fileObj:
             writerObj = csv.writer(fileObj)
             writerObj.writerow(['vx', 'vy', 'vphi', 't(sec)'])
-            #writerObj.writerow(['0', '0', '0', '0'])
 
         with open('/home/hrabi/data_aquisition/positions.csv', 'w') as fileObj:
             writerObj = csv.writer(fileObj)
             writerObj.writerow(['x', 'y', 'phi', 't(sec)'])
-            #writerObj.writerow(['0', '0', '0', '0'])
 
-    def pid_controller(self,ref,mesure,min_,max_):
+
+
+    def pid_controller(self,ref,mesure,min_,max_,kp,ki):
         
         pid = PID()
 
-        pid.tunings = (0.10 , 0 , 0)        
+        pid.tunings = (kp , ki , 0)        
         pid.setpoint = ref
         pid.sample_time = self.Te
         #pid.auto_mode = True 
@@ -114,6 +114,10 @@ class Controller_pub(Node):
         if(self.cpt_sub == self.cpt_pub - 1 ):
             self.get_logger().info("Odometry Vel Received")
             self.get_logger().info("[%f, %f, %f]"%(odom.twist.twist.linear.x, odom.twist.twist.linear.y, odom.twist.twist.angular.z))      
+            self.get_logger().info("Odometry Pose Received")
+            #phi from quaternion
+            q =euler_from_quaternion(odom.pose.pose.orientation.x,odom.pose.pose.orientation.y,odom.pose.pose.orientation.z,odom.pose.pose.orientation.w)
+            self.get_logger().info("[%f, %f, %f]"%(odom.pose.pose.position.x, odom.pose.pose.position.y, q[2]))      
             self.odom = odom
             self.cpt_sub += 1
     
@@ -122,8 +126,7 @@ class Controller_pub(Node):
             self.get_logger().info("RigidBody Pose Received")
             rigid = optitrack.rigid_bodies
             q =euler_from_quaternion(rigid[0].pose_stamped.pose.orientation.x,rigid[0].pose_stamped.pose.orientation.y,rigid[0].pose_stamped.pose.orientation.z,rigid[0].pose_stamped.pose.orientation.w)
-            #print(q)
-            self.get_logger().info("[%f, %f, %f]"%(rigid[0].pose_stamped.pose.position.x, rigid[0].pose_stamped.pose.position.z , q[1]))   
+            self.get_logger().info("[%f, %f, %f]"%(rigid[0].pose_stamped.pose.position.x, rigid[0].pose_stamped.pose.position.y , q[2]))   
             self.optitrack = optitrack  
             self.cpt_sub += 1
 
@@ -131,25 +134,12 @@ class Controller_pub(Node):
         #Ref dans R0
         t = time.time() - t0    
         #print(f"time {t}")
-        if t < 60:              
-            P = [0,0,0]
+        while True :              
+            x = sin(2*pi*t/60)
+            y = 1.5 + cos(2*pi*t/60)
+            phi = 0
+            P = [x,y,phi]
             return P,t
-#        
-#        elif t > 10 and t < 20 :
-#        
-#            P = [2.0,1.0,0.0]
-#            
-#            return P
-
-#        if t > 10  and t < 20 :
-#            
-#            x =  1
-#            y = 1
-#            phi = 0
-#            
-#            P = [x,y,phi]
-#            
-#            return P
         
     def Controller_callback(self):
 
@@ -160,20 +150,20 @@ class Controller_pub(Node):
         xref = P[0]
         yref = P[1]
         phiref = P[2]        
-        self.t0 = t0
+        
         #######################################################
-
-        #recuperer les positions mesure par odometry dans R0 
+        vx = 0
+        vy = 0
+        vphi = 0
+        # recuperer les positions mesure par odometry dans R0 
         odom = self.odom
         if odom :
             x = odom.pose.pose.position.x
             y = odom.pose.pose.position.y
             #phi from quaternion
             q =euler_from_quaternion(odom.pose.pose.orientation.x,odom.pose.pose.orientation.y,odom.pose.pose.orientation.z,odom.pose.pose.orientation.w)
-            phi = q[2] 
-        #############################################################
+            phi = q[2]
 
-        #recuperer les positions d optitrack
         optitrack = self.optitrack
         rigid = optitrack.rigid_bodies
         # check if the list is not empty to avoid list index error
@@ -182,22 +172,24 @@ class Controller_pub(Node):
             stamp = rigid[0].pose_stamped.header.stamp.sec
             x = rigid[0].pose_stamped.pose.position.x
             y = rigid[0].pose_stamped.pose.position.y
-            phi = q[2]        
+            phi = q[2]
+            #print(x,y,phi)
+
+        ############################################################       
         #####################################        
+        
+        vx = self.pid_controller(xref,x, -0.3 , 0.3 , 0.32 , 0)
+        vy = self.pid_controller(yref,y, -0.2 , 0.2 , 0.31 , 0)
+        vphi = self.pid_controller(phiref,phi, -0.2 , 0.2 , 0.58 , 0)
+
+        if abs(xref-x) < 0.002 and abs(yref-y) < 0.002  and abs(phiref-phi) < 0.05 :
+            vx = 0
+            vy = 0
+            vphi = 0       
+
+        ###################################################################################
         print(f"\nPose : ref[{xref},{yref},{phiref}] estime[{x},{y},{phi}] Time[{temps}]\n")        
         print(f"Sub {self.cpt_sub} Pub {self.cpt_pub}\n")
-        
-        #commande PI
-        vx = 0
-        vy = 0
-        vphi = 0
-        #erreur 
-        if abs(xref-x) > 0.0001 : 
-          vx = self.pid_controller(xref,x,-0.2,0.2)
-        if abs(yref-y) > 0.0001 :
-          vy = self.pid_controller(yref,y,-0.10, 0.10)
-        #if abs(phiref-phi) > 0.00174533 :
-        #  vphi = self.pid_controller(phiref,phi,-0.05, 0.05)
 
         #Vitesses commande de R0 a R1
         commande_x = float( vx * cos(phi) + vy * sin(phi))
@@ -206,28 +198,31 @@ class Controller_pub(Node):
         
         #create a msg twist to publish
         commande = Twist()    
-        commande.linear.x = commande_x
-        commande.linear.y = commande_y
-        commande.angular.z = commande_phi
+        commande.linear.x = float(commande_x)
+        commande.linear.y = float(commande_y)
+        commande.angular.z = float(commande_phi)
         
-        #time.sleep(0.02)
         if(self.cpt_pub == self.cpt_sub):
             #publish twist msg 
             self.get_logger().info('Publishing Command Velocities' )
             self.get_logger().info("[%f, %f, %f]"%(commande.linear.x, commande.linear.y, commande.angular.z))
             self.publisher.publish(commande)
             self.cpt_pub += 1 
+        
+        if (x != 0 or y != 0 or phi != 0 ):
+            # Save Poses and Velocities to Csv
+            t_plot = self.t_plot
+            with open('/home/hrabi/data_aquisition/vitesses.csv', 'a') as fileObj:
+                tocsv = [commande_x,commande_y,commande_phi,temps]
+                writerObj = csv.writer(fileObj)
+                writerObj.writerow(tocsv)
 
-        # Save Poses and Velocities to Csv
-        with open('/home/hrabi/data_aquisition/vitesses.csv', 'a') as fileObj:
-           tocsv = [commande_x,commande_y,commande_phi,temps]
-           writerObj = csv.writer(fileObj)
-           writerObj.writerow(tocsv)
+            with open('/home/hrabi/data_aquisition/positions.csv', 'a') as fileObj:
+                tocsv = [x,y,phi,temps]
+                writerObj = csv.writer(fileObj)
+                writerObj.writerow(tocsv)
 
-        with open('/home/hrabi/data_aquisition/positions.csv', 'a') as fileObj:
-           tocsv = [x,y,phi,temps]
-           writerObj = csv.writer(fileObj)
-           writerObj.writerow(tocsv)
+            self.t_plot = t_plot + self.Te
 
 def main():
     rclpy.init()

@@ -18,6 +18,7 @@ The high level control algo contains the `controller` node, which is a Publisher
 
 ![image.png](./rosgraph.png)
 
+Nodes are highlited in blue and Topics in green
 
 # Configuration
 

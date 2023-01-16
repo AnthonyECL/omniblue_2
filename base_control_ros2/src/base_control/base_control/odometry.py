@@ -52,21 +52,30 @@ class Odometry_pub(Node):
         super().__init__('odometry')
                        
         self.last_time = time.time()
-        self.time = 0
+        self.T = time.time()
         
         #to print position
-        self.X = 0
-        self.Y = 0
-        self.Phi = 0
-        
+        self.P = [0 , 0 , 0]
+        self.t_plot = 0
+        self.Te = 0.08
+
         # Initialize the transform broadcaster
         self.tf_broadcaster = TransformBroadcaster(self)
         
         ## publish twist msg
         self.publisher_ = self.create_publisher(Odometry, 'odom', 10)
-        timer_period =   0.16 # seconds
+        timer_period =  self.Te  # seconds
         self.timer = self.create_timer(timer_period, self.Send_odom)
-            
+        
+                # Data aquisitions
+        # Init the csv file for writing Poses and Velocities
+        with open('/home/ubuntu/data_aquisition/vitesses.csv', 'w') as fileObj:
+            writerObj = csv.writer(fileObj)
+            writerObj.writerow(['vx', 'vy', 'vphi', 't(sec)'])
+
+        with open('/home/ubuntu/data_aquisition/positions.csv', 'w') as fileObj:
+            writerObj = csv.writer(fileObj)
+            writerObj.writerow(['x', 'y', 'phi', 't(sec)'])    
 ############################################  decode encoders #####################################################
     
     def listen_encoder(self,id_enc):
@@ -78,14 +87,14 @@ class Odometry_pub(Node):
         if msg.arbitration_id == 0x404 and id_enc == 0 :
           print(f"ENCODER 0: {msg.data}")
           d = struct.unpack('4h', msg.data)
-          pm = d[0]*2
+          pm = d[0]
           p = d[1]
           print(pm,p)
           return pm
         if msg.arbitration_id == 0x414 and id_enc == 1 :
           print(f"ENCODER 1: {msg.data}")
           d = struct.unpack('4h', msg.data)
-          pm = d[0]*2
+          pm = d[0]
           p = d[1]
           print(pm,p)
           return pm
@@ -93,7 +102,7 @@ class Odometry_pub(Node):
         if msg.arbitration_id == 0x424 and id_enc == 2 :
           print(f"ENCODER 2: {msg.data}")
           d = struct.unpack('4h', msg.data)
-          pm = d[0]*2
+          pm = d[0]
           p = d[1]
           print(pm,p)
           return pm
@@ -101,7 +110,7 @@ class Odometry_pub(Node):
         if msg.arbitration_id == 0x434 and id_enc == 3 :
           print(f"ENCODER 3: {msg.data}")
           d = struct.unpack('4h', msg.data)
-          pm = d[0]*2
+          pm = d[0]
           p = d[1]
           print(pm,p)
           return pm
@@ -111,7 +120,7 @@ class Odometry_pub(Node):
     def Calcul_vitesse(self,P0,P1,P2,P3):
         # 2 pulse --> 2.5cm/s --> 0.5 rd/s
         R=5 #cm
-        alpha = 2.56072580645161/2 #(cm/s)/pulse
+        alpha = 2.083 #2.56072580645161 #(cm/s)/pulse
         
         #rad/s
         w0 = P0 * (alpha/R) 
@@ -137,7 +146,7 @@ class Odometry_pub(Node):
         W3 = Wm[3]
        
         #matrice A
-        A = np.array([[R/4,R/4,R/4,R/4],[-R/4,R/4,-R/4,R/4],[-R/(4*(L+w)),-R/(4*(L+w)),R/(4*(L+w)),R/(4*(L+w))],[-1,-1,-1,-1]])
+        A = np.array([[R/4,R/4,R/4,R/4],[R/4,-R/4,R/4,-R/4],[-R/(4*(L+w)),R/(4*(L+w)),R/(4*(L+w)),-R/(4*(L+w))],[1,1,-1,-1]])
         W= np.array([W0,W1,W2,W3])
        
         #Calcul de Vx,Vy,Vphi//[V]=[A].[W]
@@ -148,34 +157,34 @@ class Odometry_pub(Node):
     ############################# Integration et passage de R1 a R0  #####################################  
     ############################# --> Vitesses et Positions estimees #####################################
     
-    def Integral(self,V,X,Y,Phi,dt):            
+    def Integral(self,V,P,current_time,last_time):            
       
-        x = X
-        y = Y
-        phi = Phi
-                
-        dt= 0.128999  #20ms 
-        
+        x = P[0]
+        y = P[1]
+        th = P[2]
+    
+        dt= current_time - last_time
+
         vx = V[0]
         vy = V[1]
-        vphi = V[2]
+        vth = V[2]
         
         # de R1 a R0    
-        delta_x = (vx * cos(phi) - vy * sin(phi)) * dt 
-        delta_y = (vx * sin(phi) + vy * cos(phi)) * dt 
-        delta_phi = vphi * dt 
-        
+        delta_x = (vx * cos(th) - vy * sin(th)) * dt
+        delta_y = (vx * sin(th) + vy * cos(th)) * dt
+        delta_th = vth * dt 
+   
         x += delta_x
         y += delta_y
-        phi += delta_phi
+        th += delta_th
 
        
-        V = [vx , vy , vphi]
-        P = [x , y , phi]
+        V = [vx, vy , vth ]
+        P = [x, y, th]
 
-        print(f"delta t = {dt} ")
+        print(f"delta t = {dt} // Integration")
        
-        return V , P 
+        return V , P
         
     ############################### envoie odometry #########################################
     
@@ -183,40 +192,33 @@ class Odometry_pub(Node):
         
         current_time = time.time() 
         last_time = self.last_time
-        
-        dt = current_time - last_time
-        #self.time += dt
-        
-        # P[n-1]
-        X = self.X 
-        Y = self.Y 
-        Phi = self.Phi
-       
+        self.last_time = time.time()
+
         #########               
         P0 = self.listen_encoder(0)
         P1 = self.listen_encoder(1)
         P2 = self.listen_encoder(2)
         P3 = self.listen_encoder(3)
        
-        Wm = self.Calcul_vitesse(P0,P1,P3,P2)
-        
-        #print("\n Wn \n")
-        #print(Wm)
-        
+        Wm = self.Calcul_vitesse(P0,P1,P2,P3)
+        #Wm = [20 , 0 , 20 , 0]        
         Vm = self.Model_Direct(Wm)#R1
-        
-        [Vel,Pose] = self.Integral(Vm,X,Y,Phi,dt)  #Dans R0
 
-        # P[n] = P[n-1]+ dP
-        self.X =  Pose[0]
-        self.Y =  Pose[1]
-        self.Phi =  Pose[2]
+        # P[n-1]
+        P = self.P        
+        [Vel,Pose] = self.Integral(Vm,P,current_time,last_time)     #Dans R0
+        if ( P[2] > pi ) : # phi entre -pi et pi 
+            P[2] = - pi
+        if ( P[2] < -pi ) :
+            P[2] =  pi
         # Save Pose (Somme des P[i] {i de 0 a n} )
-        X = self.X
-        Y = self.Y
-        Phi = self.Phi   
+        self.P = Pose + P
+    
+        T = current_time - self.T   
+        print(f'Vitesse {Vel}  Positions {Pose[0],Pose[1],Pose[2]} Time {T}')       
         
-        print(f'Vitesse {Vel}  Positions {X,Y,Phi} ')     
+        ######################################################################################
+        # create msg 
         
         current_time = self.get_clock().now().to_msg()
        
@@ -247,11 +249,11 @@ class Odometry_pub(Node):
         odom.child_frame_id = "base_mobile"
         
         # set the position
-        odom.pose.pose.position.x = X
-        odom.pose.pose.position.y = Y
+        odom.pose.pose.position.x = float(Pose[0])
+        odom.pose.pose.position.y = float(Pose[1])
         odom.pose.pose.position.z = 0.0
 
-        q = quaternion_from_euler(0, 0, Phi)
+        q = quaternion_from_euler(0, 0, float(Pose[2]))
         odom.pose.pose.orientation.x = q[0]
         odom.pose.pose.orientation.y = q[1]
         odom.pose.pose.orientation.z = q[2]
@@ -265,9 +267,19 @@ class Odometry_pub(Node):
         self.publisher_.publish(odom)
         self.get_logger().info("Odometry published")
         
-        self.last_time = time.time()
-        #time.sleep(0.02) 
-               
+        if (Pose[0] != 0 or Pose[1] != 0 or Pose[2] != 0 ):
+            # Save Poses and Velocities to Csv
+            t_plot = self.t_plot
+            with open('/home/ubuntu/data_aquisition/vitesses.csv', 'a') as fileObj:
+                tocsv = [Vel[0],Vel[1],Vel[2],t_plot]
+                writerObj = csv.writer(fileObj)
+                writerObj.writerow(tocsv)
+
+            with open('/home/ubuntu/data_aquisition/positions.csv', 'a') as fileObj:
+                tocsv = [Pose[0],Pose[1],Pose[2],t_plot]
+                writerObj = csv.writer(fileObj)
+                writerObj.writerow(tocsv)        
+            self.t_plot = t_plot + self.Te               
 #############################################################################################  
 
 def main():

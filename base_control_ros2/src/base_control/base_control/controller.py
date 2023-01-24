@@ -73,7 +73,7 @@ class Controller_pub(Node):
         self.subscription = self.create_subscription(RigidBodyArray,'mocap_rigid_bodies',self.listener_callback1,10)
         self.subscription  # prevent unused variable warning
         
-        time.sleep(0.0001)# to subsribe first before publishing
+        time.sleep(0.001)# to subsribe first before publishing
         
         ## publish twist msg
         self.publisher = self.create_publisher(Twist, 'cmd_vel_control', 10)
@@ -132,84 +132,110 @@ class Controller_pub(Node):
 
     def trajectoire(self,t0):
         #Ref dans R0
-        t = time.time() - t0    
-        #print(f"time {t}")
-        while True :              
-            x = sin(2*pi*t/60)
-            y = 1.5 + cos(2*pi*t/60)
+        t = time.time() - t0
+        print(f"time {t}")
+        while True : 
+            x = (cos(2*pi*t/40))
+            y = (1+sin(2*pi*t/40))
             phi = 0
             P = [x,y,phi]
+            #P = [ 0, 0 , 0]
             return P,t
-        
+        '''
+        phi = 0
+        if t < 20 :
+            x = 1 
+            y = 0
+        if t > 20 and t < 60  :
+            x = 1
+            y = 2
+        if t > 60 and t < 80  :
+            x = 0 
+            y = 2
+        if t > 80 :
+            x = 0
+            y = 0
+        P = [x,y,phi]
+        #P = [0.5 , 0.5 , 0]
+        return P,t
+        '''
     def Controller_callback(self):
 
-        t0 = self.t0
-        #trajectoire ref dans R0   
-        P,temps = self.trajectoire(t0)  
-        ###################################################
-        xref = P[0]
-        yref = P[1]
-        phiref = P[2]        
-        
-        #######################################################
-        vx = 0
-        vy = 0
-        vphi = 0
-        # recuperer les positions mesure par odometry dans R0 
-        odom = self.odom
-        if odom :
-            x = odom.pose.pose.position.x
-            y = odom.pose.pose.position.y
-            #phi from quaternion
-            q =euler_from_quaternion(odom.pose.pose.orientation.x,odom.pose.pose.orientation.y,odom.pose.pose.orientation.z,odom.pose.pose.orientation.w)
-            phi = q[2]
+        commande_x = 0.0
+        commande_y = 0.0
+        commande_phi = 0.0
 
-        optitrack = self.optitrack
-        rigid = optitrack.rigid_bodies
-        # check if the list is not empty to avoid list index error
-        if rigid :    
-            q =euler_from_quaternion(rigid[0].pose_stamped.pose.orientation.x,rigid[0].pose_stamped.pose.orientation.y,rigid[0].pose_stamped.pose.orientation.z,rigid[0].pose_stamped.pose.orientation.w)
-            stamp = rigid[0].pose_stamped.header.stamp.sec
-            x = rigid[0].pose_stamped.pose.position.x
-            y = rigid[0].pose_stamped.pose.position.y
-            phi = q[2]
-            #print(x,y,phi)
-
-        ############################################################       
-        #####################################        
-        
-        vx = self.pid_controller(xref,x, -0.3 , 0.3 , 0.32 , 0)
-        vy = self.pid_controller(yref,y, -0.2 , 0.2 , 0.31 , 0)
-        vphi = self.pid_controller(phiref,phi, -0.2 , 0.2 , 0.58 , 0)
-
-        if abs(xref-x) < 0.002 and abs(yref-y) < 0.002  and abs(phiref-phi) < 0.05 :
+        if(self.cpt_pub == self.cpt_sub):
+            t0 = self.t0
+            #trajectoire ref dans R0   
+            P,temps = self.trajectoire(t0)  
+            ###################################################
+            xref = P[0]
+            yref = P[1]
+            phiref = P[2]        
+            
+            #######################################################
             vx = 0
             vy = 0
-            vphi = 0       
+            vphi = 0
+            # recuperer les positions mesure par odometry dans R0 
+            odom = self.odom
+            if odom :
+                x = odom.pose.pose.position.x
+                y = odom.pose.pose.position.y
+                #phi from quaternion
+                q =euler_from_quaternion(odom.pose.pose.orientation.x,odom.pose.pose.orientation.y,odom.pose.pose.orientation.z,odom.pose.pose.orientation.w)
+                phi = q[2]
 
-        ###################################################################################
-        print(f"\nPose : ref[{xref},{yref},{phiref}] estime[{x},{y},{phi}] Time[{temps}]\n")        
-        print(f"Sub {self.cpt_sub} Pub {self.cpt_pub}\n")
+            optitrack = self.optitrack
+            rigid = optitrack.rigid_bodies
+            # check if the list is not empty to avoid list index error
+            if rigid :    
+                q =euler_from_quaternion(rigid[0].pose_stamped.pose.orientation.x,rigid[0].pose_stamped.pose.orientation.y,rigid[0].pose_stamped.pose.orientation.z,rigid[0].pose_stamped.pose.orientation.w)
+                stamp = rigid[0].pose_stamped.header.stamp.sec
+                x = rigid[0].pose_stamped.pose.position.x
+                y = rigid[0].pose_stamped.pose.position.y
+                phi = q[2]
+                #print(x,y,phi)
 
-        #Vitesses commande de R0 a R1
-        commande_x = float( vx * cos(phi) + vy * sin(phi))
-        commande_y = float(-vx * sin(phi) + vy * cos(phi))
-        commande_phi = float(vphi)
-        
-        #create a msg twist to publish
-        commande = Twist()    
-        commande.linear.x = float(commande_x)
-        commande.linear.y = float(commande_y)
-        commande.angular.z = float(commande_phi)
-        
-        if(self.cpt_pub == self.cpt_sub):
+            ############################################################       
+            #####################################        
+            vx = self.pid_controller(xref,x, -0.3 , 0.3 , -0.8771 , 0.0001)
+            vy = self.pid_controller(yref,y, -0.3 , 0.3 , -1.183 , 0.001) #0.31
+            vphi = self.pid_controller(phiref,phi, -0.15 , 0.15 , -0.999 , 0.001) #0.58
+            
+            if abs(xref-x) < 0.01 and abs(yref-y) < 0.01:
+                vphi = self.pid_controller(phiref,phi, -0.25 , 0.25 , -0.999 , 0.001) #0.58
+                vx = 0
+                vy = 0
+
+            if abs(xref-x) < 0.002 and abs(yref-y) < 0.002  and abs(phiref-phi) < 0.017 :
+                vx = 0
+                vy = 0
+                vphi = 0       
+
+            ###################################################################################
+            print(f"\nPose : ref[{xref},{yref},{phiref}] estime[{x},{y},{phi}] Time[{temps}]\n")        
+            print(f"Sub {self.cpt_sub} Pub {self.cpt_pub}\n")
+
+            #Vitesses commande de R0 a R1
+            commande_x = float( vx * cos(phi) + vy * sin(phi))
+            commande_y = float(-vx * sin(phi) + vy * cos(phi))
+            commande_phi = float(vphi)
+            
+            #create a msg twist to publish
+            commande = Twist()    
+            commande.linear.x = float(commande_x)
+            commande.linear.y = float(commande_y)
+            commande.angular.z = float(commande_phi)
+            
             #publish twist msg 
             self.get_logger().info('Publishing Command Velocities' )
             self.get_logger().info("[%f, %f, %f]"%(commande.linear.x, commande.linear.y, commande.angular.z))
             self.publisher.publish(commande)
             self.cpt_pub += 1 
         
-        if (x != 0 or y != 0 or phi != 0 ):
+        if (commande_x != 0 or commande_y != 0 or commande_phi != 0 ):
             # Save Poses and Velocities to Csv
             t_plot = self.t_plot
             with open('/home/hrabi/data_aquisition/vitesses.csv', 'a') as fileObj:

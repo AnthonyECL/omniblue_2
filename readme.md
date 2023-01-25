@@ -1,4 +1,4 @@
-# Bras_Maniplateur
+# Bras_Manipulateur
 
 ## Desciption
 

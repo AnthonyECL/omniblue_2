@@ -1,6 +1,6 @@
 # base_mobile
 
-## Desciption
+## Description
 
 Here you will find the different ROS2 low/high level nodes and packages for the mobile base.
 

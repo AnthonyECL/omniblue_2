@@ -42,11 +42,11 @@ class Base_mobile(Node):
 
 #################  send to can  ########################################################
     #pour arrondir les float    
-    def round(self,num, dec=0):
-        num = str(num)[:str(num).index('.')+dec+2]
-        if num[-1]>='5':
-            return float(num[:-2-(not dec)]+str(int(num[-2-(not dec)])+1))
-        return float(num[:-1])
+    def round(num):
+        if (abs(num) - abs(int(num)) > 0.5):
+            return (int(num) +np.sign(num))
+        else:
+            return int(num)
     
     #envoie les msgs CAN 
     def sendCan(self,W):      

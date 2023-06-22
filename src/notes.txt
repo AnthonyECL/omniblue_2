@@ -1,0 +1,3 @@
+omniblue_diff_class.py has transformation frame included (from map to odometry)
+Launching the lidar within the car2 node:  rosrun rplidar_ros rplidarNode /scan:=/car2/scan
+transformation for the lidar: rosrun tf static_transform_publisher 0 0 0 0 0 0 /car2/odom laser_frame 40

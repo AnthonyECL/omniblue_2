@@ -20,7 +20,7 @@ from geometry_msgs.msg import TransformStamped
 
 
 class omniBlue():
-    P = [1, 0, 0]
+    P = [0, 0, 0]
     nodeName = "car2"
     BattVal = 0
     R = 0.04
@@ -183,7 +183,7 @@ class omniBlue():
        
         #Calcul de Vx,Vy,Vphi//[V]=[A].[W]
         V=A.dot(W)
-        
+        V[2]/=8
        
         return V
 

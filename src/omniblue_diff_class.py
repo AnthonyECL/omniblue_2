@@ -12,6 +12,7 @@ import struct
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import  Odometry
+from marvelmind_nav.msg import hedge_pos, hedge_imu_fusion
 
 import numpy as np
 from math import sin, cos, pi ,exp
@@ -24,17 +25,22 @@ class omniBlue():
     nodeName = "car2"
     BattVal = 0
     R = 0.04
-    w=0.295
-
+    w=0.288
     T = 0.04
     alpha =1041
+    flagTracking = False
+    trackedPos = [0.0, 0.0, 0.0]
+    trackedVel = [0.0, 0.0, 0.0]
+    trackedQuat = [0.0, 0.0, 0.0, 0.0]
+    
+    
     bus = can.interface.Bus(bustype='socketcan', channel='can0', bitrate=125000)
     tf_broadcaster = TransformBroadcaster()
 
     pub = rospy.Publisher (nodeName + '/odom', Odometry, queue_size=1)   
 
     def __init__(self):
-        msg = self.bus.recv(0.02)
+        msg = self.bus.recv(0.025)
         while msg is not None:
             if msg.arbitration_id == 0x403 or msg.arbitration_id == 0x400:
                 pass
@@ -46,6 +52,8 @@ class omniBlue():
         #subscribe to teleop twist keyboard
         rospy.init_node(self.nodeName, anonymous=True)
         rospy.Subscriber('cmd_vel', Twist, self.listener_callback1)
+        rospy.Subscriber('hedge_pos', hedge_pos, self.listener_callback_tracking_pos)
+        rospy.Subscriber('hedge_imu_fusion', hedge_imu_fusion, self.listener_callback_tracking_imu)
         rospy.Subscriber(self.nodeName + '/cmd_vel', Twist, self.listener_callback1)
         rospy.Timer(rospy.Duration(self.T), self.fill_encoders)
         
@@ -60,23 +68,23 @@ class omniBlue():
         #  1 cons ----> 2.083 cm/s ------> 0.4166 rd/s
         #     # 1 pulse --> 2.5cm/s --> 0.5 rd/s
         #conversion from rd/s to cons
-        constante_mot0 = int(self.round(W[0]/(self.alpha/(self.R*1e5))))
-        constante_mot1 = int(self.round(W[1]/(self.alpha/(self.R*1e5))))
-        constante_mot2 = int(self.round(W[1]/(self.alpha/(self.R*1e5))))
-        constante_mot3 = int(self.round(W[0]/(self.alpha/(self.R*1e5))))
+        factor = 1/(self.alpha/(self.R*1e5))
+        constante_mot0 = int(self.round(W[0]*factor))
+        constante_mot1 = int(self.round(W[1]*factor))
+        constante_mot2 = int(self.round(W[1]*factor))
+        constante_mot3 = int(self.round(W[0]*factor))
        
         #conversion to bytes
         bytes_val_mot1 = constante_mot0.to_bytes(2, 'little',signed=True)
         bytes_val_mot0 = constante_mot1.to_bytes(2, 'little',signed=True)
         bytes_val_mot3 = constante_mot2.to_bytes(2, 'little',signed=True)
         bytes_val_mot2 = constante_mot3.to_bytes(2, 'little',signed=True)
-        #print("Wr: " + str(W[0]) + "->" + str(constante_mot0) + "->" + str(bytes_val_mot1) + "   Wl: " + str(W[1]) + "->" + str(constante_mot1) + "->" + str(bytes_val_mot0))
         
         msg = can.Message(arbitration_id=0x401, data=[bytes_val_mot0[0],bytes_val_mot0[1],bytes_val_mot1[0],bytes_val_mot1[1],bytes_val_mot2[0],bytes_val_mot2[1],bytes_val_mot3[0],bytes_val_mot3[1]], is_extended_id=False)
         
         try:
           self.bus.send(msg)
-          time.sleep(0.01)
+          time.sleep(0.005)
         except can.CanError:
           print("Message NOT sent")
 
@@ -103,17 +111,24 @@ class omniBlue():
         self.Send_odom(P0,P1,P2,P3)
       
     def Send_odom(self,P0,P1,P2,P3):
-        #########               
-        Wm = self.Calcul_vitesse(P0/self.T,P1/self.T,P2/self.T,P3/self.T)
-        Vm = self.Model_Direct(Wm)#R1
+        #########  
+        if (not self.flagTracking):
+            Wm = self.Calcul_vitesse(P0,P1,P2,P3)
+            Vm = self.Model_Direct(Wm)#R1
 
-        [Vel,self.P] = self.Integral(Vm,self.P, self.T)     #Dans R0
-        if ( self.P[2] > pi ) : # phi entre -pi et pi 
-            self.P[2] -=  2*pi
-        if ( self.P[2] < -pi ) :
-            self.P[2] +=  2*pi
+            [Vel,self.P] = self.Integral(Vm,self.P, self.T)     #Dans R0
+            if ( self.P[2] > pi ) : # phi entre -pi et pi 
+                self.P[2] -=  2*pi
+            if ( self.P[2] < -pi ) :
+                self.P[2] +=  2*pi
+            q = quaternion_from_euler(0, 0, float(self.P[2]))
 
-
+        else:
+            self.P[0] = self.trackedPos[1]
+            self.P[1] = self.trackedPos[0]
+            Vel = [self.trackedVel[0], self.trackedVel[1], self.trackedVel[2]] 
+            q = [self.trackedQuat[0], self.trackedQuat[1], self.trackedQuat[2], self.trackedQuat[3]]
+#            print (q)
 
         odom = Odometry()
         
@@ -128,7 +143,6 @@ class omniBlue():
         odom.pose.pose.position.y = float(self.P[1])
         odom.pose.pose.position.z = 0.0
     #    print(P[2]*180/pi)
-        q = quaternion_from_euler(0, 0, float(self.P[2]))
         odom.pose.pose.orientation.x = q[0]
         odom.pose.pose.orientation.y = q[1]
         odom.pose.pose.orientation.z = q[2]
@@ -162,10 +176,11 @@ class omniBlue():
         self.pub.publish(odom)
 
     def Calcul_vitesse(self,P0,P1,P2,P3):
-        w0 = P0 * (self.R/self.alpha) * 100
-        w1 = P1 * (self.R/self.alpha) * 100 
-        w2 = P2 * (self.R/self.alpha) * 100
-        w3 = P3 * (self.R/self.alpha) * 100
+        factor = (self.R/(self.alpha*self.T)) * 100
+        w0 = P0 * factor
+        w1 = P1 * factor
+        w2 = P2 * factor
+        w3 = P3 * factor
            
         wm = [w0,w1,w2,w3]
         
@@ -193,12 +208,9 @@ class omniBlue():
         y = Pose[1]
         th = Pose[2]
 
-        vx = V[0]
-        vy = V[1]
-        vth = V[2]
         
-        delta_x = (vx * cos(th) ) * dt
-        delta_y = (vx * sin(th)) * dt
+        delta_x = (V[0] * cos(th) ) * dt
+        delta_y = (V[0] * sin(th)) * dt
         delta_th = V[2] * dt 
 
         x += delta_x
@@ -206,7 +218,7 @@ class omniBlue():
         th += delta_th
 
        
-        V = [vx, vy , vth ]
+        V = [V[0], V[1] , V[2] ]
         Pose = [x, y, th]
        
         return V , Pose
@@ -219,6 +231,24 @@ class omniBlue():
     def listener_callback1(self,msg):
         W=self.Model_Inv(msg.linear.x, msg.linear.y,msg.angular.z)
         self.sendCan(W)   
+
+    def listener_callback_tracking_pos(self,msg):
+        self.flagTracking = True
+        self.trackedPos[0] = msg.x_m
+        self.trackedPos[1] = msg.y_m
+        self.trackedPos[2] = msg.y_m
+        
+    def listener_callback_tracking_imu(self,msg):
+        self.flagTracking = True
+        self.trackedVel[0] = msg.vx
+        self.trackedVel[1] = msg.vy
+        self.trackedVel[2] = msg.vz
+        self.trackedQuat[0] = msg.qx
+        self.trackedQuat[1] = msg.qy
+        self.trackedQuat[2] = msg.qz
+        self.trackedQuat[3] = msg.qw
+        #print (msg)
+        
 
         
 #################  send to can  ########################################################

@@ -12,10 +12,10 @@ import struct
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import  Odometry
-from marvelmind_nav.msg import hedge_pos, hedge_imu_fusion
+from marvelmind_nav.msg import hedge_pos, hedge_imu_fusion, hedge_imu_raw, hedge_pos_ang
 
 import numpy as np
-from math import sin, cos, pi ,exp
+from math import sin, cos, pi ,exp, atan2
 from tf2_ros import TransformBroadcaster
 from geometry_msgs.msg import TransformStamped
 
@@ -26,10 +26,11 @@ class omniBlue():
     BattVal = 0
     R = 0.04
     w=0.288
+    northAngle = 1.5672
     T = 0.04
     alpha =1041
     flagTracking = False
-    trackedPos = [0.0, 0.0, 0.0]
+    trackedPos = [0.0, 0.0, 0.0, 0.0]
     trackedVel = [0.0, 0.0, 0.0]
     trackedQuat = [0.0, 0.0, 0.0, 0.0]
     
@@ -52,8 +53,10 @@ class omniBlue():
         #subscribe to teleop twist keyboard
         rospy.init_node(self.nodeName, anonymous=True)
         rospy.Subscriber('cmd_vel', Twist, self.listener_callback1)
-        rospy.Subscriber('hedge_pos', hedge_pos, self.listener_callback_tracking_pos)
-        rospy.Subscriber('hedge_imu_fusion', hedge_imu_fusion, self.listener_callback_tracking_imu)
+        rospy.Subscriber(self.nodeName + '/hedge_pos_ang', hedge_pos_ang, self.listener_callback_tracking_pos)
+#        rospy.Subscriber(self.nodeName + '/hedge_pos', hedge_pos, self.listener_callback_tracking_pos)
+ #       rospy.Subscriber(self.nodeName + '/hedge_imu_fusion', hedge_imu_fusion, self.listener_callback_tracking_imu)
+        # rospy.Subscriber(self.nodeName + '/hedge_imu_raw', hedge_imu_raw, self.listener_callback_tracking_imu)
         rospy.Subscriber(self.nodeName + '/cmd_vel', Twist, self.listener_callback1)
         rospy.Timer(rospy.Duration(self.T), self.fill_encoders)
         
@@ -112,23 +115,6 @@ class omniBlue():
       
     def Send_odom(self,P0,P1,P2,P3):
         #########  
-        if (not self.flagTracking):
-            Wm = self.Calcul_vitesse(P0,P1,P2,P3)
-            Vm = self.Model_Direct(Wm)#R1
-
-            [Vel,self.P] = self.Integral(Vm,self.P, self.T)     #Dans R0
-            if ( self.P[2] > pi ) : # phi entre -pi et pi 
-                self.P[2] -=  2*pi
-            if ( self.P[2] < -pi ) :
-                self.P[2] +=  2*pi
-            q = quaternion_from_euler(0, 0, float(self.P[2]))
-
-        else:
-            self.P[0] = self.trackedPos[1]
-            self.P[1] = self.trackedPos[0]
-            Vel = [self.trackedVel[0], self.trackedVel[1], self.trackedVel[2]] 
-            q = [self.trackedQuat[0], self.trackedQuat[1], self.trackedQuat[2], self.trackedQuat[3]]
-#            print (q)
 
         odom = Odometry()
         
@@ -137,10 +123,39 @@ class omniBlue():
         odom.header.stamp.nsecs = int(timeStamp - odom.header.stamp.secs * 1e9) 
         odom.header.frame_id = self.nodeName + '/odom'
         odom.child_frame_id = "laser_frame"
-        
+
+        Wm = self.Calcul_vitesse(P0,P1,P2,P3)
+        Vm = self.Model_Direct(Wm)#R1
+
+        [Vel,self.P] = self.Integral(Vm,self.P, self.T)     #Dans R0
+#        self.P[2] = atan2(self.trackedVel[1],self.trackedVel[0]) - self.northAngle
+        if ( self.P[2] > pi ) : # phi entre -pi et pi 
+            self.P[2] -=  2*pi
+        if ( self.P[2] < -pi ) :
+            self.P[2] +=  2*pi
+        q = quaternion_from_euler(0, 0, float(self.P[2]))
+#        q = quaternion_from_euler(0, 0, compassAngle)
+
+        if (not self.flagTracking):
+
+            odom.pose.pose.position.x = float(self.P[0])
+            odom.pose.pose.position.y = float(self.P[1])
+
+            odom.twist.twist.linear.x = Vel[0] * cos(self.P[2])
+            odom.twist.twist.linear.y = Vel[0] * sin(self.P[2])
+            odom.twist.twist.angular.z = self.trackedVel[2]
+
+
+        else:
+            odom.pose.pose.position.x = float(self.trackedPos[0])
+            odom.pose.pose.position.y = float(self.trackedPos[1])
+            q = quaternion_from_euler(0, 0, self.trackedPos[3])
+
+
+#            q = [self.trackedQuat[0], self.trackedQuat[1], self.trackedQuat[2], self.trackedQuat[3]]
+#            print (q)
+#        print ('compass:' + str(self.trackedVel))
         # set the position
-        odom.pose.pose.position.x = float(self.P[0])
-        odom.pose.pose.position.y = float(self.P[1])
         odom.pose.pose.position.z = 0.0
     #    print(P[2]*180/pi)
         odom.pose.pose.orientation.x = q[0]
@@ -149,9 +164,6 @@ class omniBlue():
         odom.pose.pose.orientation.w = q[3]
 
         # set the velocity
-        odom.twist.twist.linear.x = Vel[0]
-        odom.twist.twist.linear.y = Vel[1]
-        odom.twist.twist.angular.z = Vel[2]
         
         t = TransformStamped()
         # Read message content and assign it to
@@ -234,15 +246,20 @@ class omniBlue():
 
     def listener_callback_tracking_pos(self,msg):
         self.flagTracking = True
-        self.trackedPos[0] = msg.x_m
-        self.trackedPos[1] = msg.y_m
-        self.trackedPos[2] = msg.y_m
+        if msg.address == 14 or msg.address == 15:
+            self.trackedPos[0] = msg.x_m
+            self.trackedPos[1] = msg.y_m
+            self.trackedPos[2] = msg.z_m
+            self.trackedPos[3] = msg.angle*pi/180
         
     def listener_callback_tracking_imu(self,msg):
         self.flagTracking = True
         self.trackedVel[0] = msg.vx
         self.trackedVel[1] = msg.vy
         self.trackedVel[2] = msg.vz
+        # self.trackedVel[0] = msg.compass_x
+        # self.trackedVel[1] = msg.compass_y
+        # self.trackedVel[2] = msg.compass_z
         self.trackedQuat[0] = msg.qx
         self.trackedQuat[1] = msg.qy
         self.trackedQuat[2] = msg.qz

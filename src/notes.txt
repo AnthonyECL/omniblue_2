@@ -1,3 +1,4 @@
 omniblue_diff_class.py has transformation frame included (from map to odometry)
-Launching the lidar within the car2 node:  rosrun rplidar_ros rplidarNode /scan:=/car2/scan
-transformation for the lidar: rosrun tf static_transform_publisher 0 0 0 0 0 0 /car2/odom laser_frame 40
+Launching the lidar within the carX node:  rosrun rplidar_ros rplidarNode __ns:=/carX
+transformation for the lidar: rosrun tf static_transform_publisher 0 0 0 0 0 0 /carX/odom laser_frame 40
+for Marvelmind localization:  rosrun marvelmind_nav hedge_rcv_bin __ns:=/carX (to change the serial port, add /dev/ttyACMX at the end)
